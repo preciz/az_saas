@@ -1,4 +1,7 @@
 # AzSaas
+
+![Actions Status](https://github.com/preciz/az_saas/workflows/test/badge.svg)
+
 Elixir wrapper for Azure Marketplace SaaS fulfillment APIs version 2.
 
 Documentation can be found at [https://hexdocs.pm/az_saas](https://hexdocs.pm/az_saas).
