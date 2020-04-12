@@ -178,11 +178,12 @@ defmodule AzSaas do
              is_binary(plan_id) and is_binary(quantity) and is_binary(status) do
     headers = [authorization_header(access_token) | headers]
 
-    body = Jason.encode!(%{
-      "planId" => plan_id,
-      "quantity" => quantity,
-      "status" => status
-    })
+    body =
+      Jason.encode!(%{
+        "planId" => plan_id,
+        "quantity" => quantity,
+        "status" => status
+      })
 
     API.patch(
       "/subscriptions/#{subscription_id}/operations/#{operation_id}",

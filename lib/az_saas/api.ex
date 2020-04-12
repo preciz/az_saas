@@ -21,10 +21,11 @@ defmodule AzSaas.API do
   def process_request_headers(list) do
     request_id = :crypto.strong_rand_bytes(24) |> Base.encode64()
 
-    list ++ [
-      {"content-type", "application/json"},
-      {"x-ms-requestid", request_id}
-    ]
+    list ++
+      [
+        {"content-type", "application/json"},
+        {"x-ms-requestid", request_id}
+      ]
   end
 
   # overwriteable "?api-version" query param
