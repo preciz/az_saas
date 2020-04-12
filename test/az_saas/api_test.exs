@@ -18,4 +18,14 @@ defmodule AzSaas.ApiTest do
 
     assert %{"api-version" => "anything"} = params
   end
+
+  test "default request headers are overwriteable" do
+    assert {"x-ms-requestid", _random} =
+             AzSaas.API.process_request_headers([])
+             |> Enum.find(fn {k, _} -> k == "x-ms-requestid" end)
+
+    assert {"x-ms-requestid", "anything"} =
+             AzSaas.API.process_request_headers([{"x-ms-requestid", "anything"}])
+             |> Enum.find(fn {k, _} -> k == "x-ms-requestid" end)
+  end
 end
