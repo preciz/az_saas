@@ -2,18 +2,27 @@ defmodule AzSaas do
   @moduledoc """
   Elixir wrapper for Azure Marketplace SaaS fulfillment APIs version 2.
 
-  production API version: `"2018-08-31"`
+  ## Usage
+
+  For the production API you need an access-token.
+  See: [Register a SaaS application](https://docs.microsoft.com/en-us/azure/marketplace/partner-center-portal/pc-saas-registration)
+
+      iex> AzSaas.list_subscriptions("myRealTokenHere")
+      {:ok, %HTTPoison.Response{...}}
+
+  ## API versions
+  production API version (default): `"2018-08-31"`
 
   mock API version: `"2018-08-31"`
 
   To set the `api-version` query param:
 
-  ## Example 1 using mock API
-      iex> AzSaas.list_subscriptions("randomNoise", [], [params: %{"api-version" => "2018-09-15"})
+  ## Using mock API example 1
+      iex> AzSaas.list_subscriptions("noRealTokenForMockAPIRequired", [], [params: %{"api-version" => "2018-09-15"})
 
-  ## Example 2 using mock API
+  ## Using mock API example 2
       iex> Application.put_env(:az_saas, :api_version, "2018-09-15")
-      iex> AzSaas.list_subscriptions("randomNoise")
+      iex> AzSaas.list_subscriptions("noRealTokenForMockAPIRequired")
   """
 
   alias AzSaas.API
