@@ -120,7 +120,7 @@ defmodule AzSaas do
              is_integer(quantity) do
     headers = [authorization_header(access_token) | headers]
 
-    body = URI.encode_query(%{"planId" => "gold", "quantity" => quantity})
+    body = URI.encode_query(%{"planId" => plan_id, "quantity" => quantity})
 
     API.post("/subscriptions/#{subscription_id}/activate", body, headers, options)
   end
